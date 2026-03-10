@@ -4,10 +4,10 @@ description: >
   formatted text. Triggers on: "generate report", "create presentation", "build spreadsheet",
   "write document", "produce PDF", "format output", or any use of the docx-generator,
   pptx-generator, or xlsx-generator skills. Provides the mandatory visual design system,
-  color tokens, component patterns, and PE/VC language standards for all deliverables.
+  color tokens, component patterns, and PE/VC language standards for all Equiforte deliverables.
 ---
 
-# Design System — PE/VC Professional Output
+# Design System — Equiforte PE CFO Professional Output
 
 All generated deliverables MUST follow this design system.
 
@@ -58,18 +58,19 @@ Read these before generating output:
 2. **Minimal chrome** — let data breathe; avoid decorative borders, gradients, shadows, or clip art
 3. **Data density over decoration** — institutional investors expect information-rich documents, not marketing material
 4. **Consistent hierarchy** — same visual weight for the same level of information across all formats
+5. **Equiforte blue brand** — use `#3563AC` as the primary brand color throughout
 
 ## Quick Reference — Color Tokens
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `primary` | `#1B3A5C` | Headers, table header rows, title bars |
-| `accent` | `#2E75B6` | Links, secondary emphasis, chart accent |
+| `primary` | `#3563AC` | Headers, table header rows, title bars |
+| `accent` | `#3563AC` | Links, secondary emphasis, chart accent |
 | `text` | `#2D2D2D` | Body text (not pure black) |
 | `text-secondary` | `#666666` | Footnotes, captions, metadata |
 | `background` | `#FFFFFF` | Page/slide background — always white |
-| `surface` | `#F7F8FA` | Alternating table rows, card backgrounds |
-| `border` | `#D9DEE3` | Table borders, dividers, card outlines |
+| `surface` | `#F4F6FA` | Alternating table rows, card backgrounds |
+| `border` | `#D4DCEA` | Table borders, dividers, card outlines |
 | `positive` | `#1A7A3A` | Gains, above-target, compliant |
 | `warning` | `#C67700` | Approaching threshold, caution |
 | `negative` | `#C4261D` | Losses, below-target, breached |

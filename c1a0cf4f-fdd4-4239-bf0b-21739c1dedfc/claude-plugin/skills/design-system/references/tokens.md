@@ -10,10 +10,10 @@ Single source of truth for all visual properties. Every generated output MUST us
 
 | Token | Hex | RGB | Usage |
 |-------|-----|-----|-------|
-| `primary` | `#1B3A5C` | 27, 58, 92 | Headers, table header fill, title bars, section rules |
-| `primary-light` | `#2A5A8C` | 42, 90, 140 | Hover states, lighter header variants |
-| `accent` | `#2E75B6` | 46, 117, 182 | Hyperlinks, chart accent, secondary emphasis, tab colors |
-| `accent-light` | `#5B9BD5` | 91, 155, 213 | Chart series 2, info badges |
+| `primary` | `#3563AC` | 53, 99, 172 | Headers, table header fill, title bars, section rules |
+| `primary-light` | `#4A7BC4` | 74, 123, 196 | Hover states, lighter header variants |
+| `accent` | `#3563AC` | 53, 99, 172 | Hyperlinks, chart accent, secondary emphasis, tab colors |
+| `accent-light` | `#5B8DD4` | 91, 141, 212 | Chart series 2, info badges |
 
 ### Text Colors
 
@@ -29,16 +29,16 @@ Single source of truth for all visual properties. Every generated output MUST us
 | Token | Hex | Usage |
 |-------|-----|-------|
 | `background` | `#FFFFFF` | Page/slide/cell background — ALWAYS white |
-| `surface` | `#F7F8FA` | Alternating table rows (even rows), KPI card background, sidebar |
-| `surface-dark` | `#EEF0F3` | Nested card background, secondary alternating row |
+| `surface` | `#F4F6FA` | Alternating table rows (even rows), KPI card background, sidebar |
+| `surface-dark` | `#E8ECF3` | Nested card background, secondary alternating row |
 
 ### Borders & Dividers
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `border` | `#D9DEE3` | Table cell borders, card outlines, horizontal rules |
-| `border-light` | `#E8ECF0` | Inner grid lines, subtle dividers |
-| `border-strong` | `#B0B8C1` | Section separators, table outer borders |
+| `border` | `#D4DCEA` | Table cell borders, card outlines, horizontal rules |
+| `border-light` | `#E3E9F2` | Inner grid lines, subtle dividers |
+| `border-strong` | `#A8B8D0` | Section separators, table outer borders |
 
 ### Semantic Colors — Status & Performance
 
@@ -61,12 +61,12 @@ Use these in sequence for multi-series charts:
 
 | Series | Hex | Name |
 |--------|-----|------|
-| 1 | `#1B3A5C` | Primary (navy) |
-| 2 | `#2E75B6` | Accent (blue) |
-| 3 | `#5B9BD5` | Light blue |
-| 4 | `#A5C8E1` | Pale blue |
-| 5 | `#1A7A3A` | Green |
-| 6 | `#C67700` | Amber |
+| 1 | `#3563AC` | Primary (Equiforte blue) |
+| 2 | `#5B8DD4` | Light blue |
+| 3 | `#8BB3E0` | Pale blue |
+| 4 | `#1A7A3A` | Green |
+| 5 | `#C67700` | Amber |
+| 6 | `#2D2D2D` | Dark gray |
 
 For two-tone comparisons (e.g., current vs. prior): use Series 1 + Series 3.
 For positive/negative: use `positive` + `negative`.
@@ -102,9 +102,9 @@ Calibri is the institutional standard. Do not use decorative, serif, or monospac
 
 ### Line Spacing
 
-- Body text: 1.15× line height
-- Table cells: 1.0× (tight)
-- Bullet lists: 1.3× with 4pt space after each item
+- Body text: 1.15x line height
+- Table cells: 1.0x (tight)
+- Bullet lists: 1.3x with 4pt space after each item
 
 ---
 
@@ -134,7 +134,7 @@ Calibri is the institutional standard. Do not use decorative, serif, or monospac
 
 | Column Type | Width |
 |-------------|-------|
-| Label / name | 25–30 characters |
+| Label / name | 25-30 characters |
 | Currency | 15 characters |
 | Percentage | 10 characters |
 | Date | 12 characters |
@@ -162,7 +162,7 @@ Calibri is the institutional standard. Do not use decorative, serif, or monospac
 ### Rules
 
 - Always show currency symbol for monetary values
-- Always show sign for changes (+X.X% / −X.X%)
+- Always show sign for changes (+X.X% / -X.X%)
 - Use parentheses for negative values in financial context, not minus sign
 - Right-align all numeric columns
 - Align decimal points within a column
