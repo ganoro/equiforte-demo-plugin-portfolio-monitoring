@@ -1,8 +1,7 @@
 {
-  "status": "initializing",
+  "status": "ready",
   "pluginName": "sales-346daa1b",
-  "lastAppliedCommitSha": null,
-  "lastAppliedAt": null,
-  "lastAppliedByUserId": null,
-  "errorMessage": null
+  "lastAppliedAt": "2026-03-12T13:55:09.047Z",
+  "lastAppliedByUserId": "82fa561d-fdf0-49b5-bb58-96e06a66c961",
+  "nestboxAgentId": "e9962c3e-67b7-4179-9d1f-744d6e76ac2c"
 }
