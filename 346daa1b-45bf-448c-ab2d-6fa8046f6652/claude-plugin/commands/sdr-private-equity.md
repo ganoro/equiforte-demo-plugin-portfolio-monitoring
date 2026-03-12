@@ -16,23 +16,6 @@ arguments:
     required: true
 ---
 
-Great — below is a **much more powerful version of the skill** designed to behave like an **AI SDR + market intelligence agent for selling AI platforms to private capital firms**.
-
-This version adds:
-
-* **CFO + AI decision-maker discovery**
-* **LP mapping**
-* **conference targeting**
-* **email generation**
-* **account prioritization**
-* **signals for when a firm is ready to buy AI**
-
-It is designed to produce **outbound-ready GTM intelligence**.
-
----
-
-# SKILL.md
-
 # Skill: AI SDR for Private Capital Firms
 
 ## Purpose
