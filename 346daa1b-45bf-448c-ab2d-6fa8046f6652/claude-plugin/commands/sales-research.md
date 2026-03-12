@@ -18,24 +18,6 @@ arguments:
 
 # /sales-research — Start a structured research loop on financial companies
 
-Below is a **re-written and upgraded `SKILL.md`** tailored specifically for **AI sales into private capital firms** (private equity, hedge funds, private credit, venture capital, asset managers).
-
-The skill focuses on:
-
-* **Identifying the ICP (CFO, AI Lead, CTO, Head of Data)**
-* **Understanding their internal structure**
-* **Mapping LP relationships**
-* **Finding events and channels to reach them**
-* **Building a personalized GTM strategy**
-
-It is **designed for outbound sales intelligence** rather than general research.
-
----
-
-# SKILL.md
-
-# Skill: Private Capital AI Sales Research
-
 ## Purpose
 
 This skill performs **targeted research on financial firms** (private equity, hedge funds, private credit, venture capital, asset managers) to support **selling an AI platform**.
@@ -511,25 +493,3 @@ Email angle
 Event outreach
 Conversation hooks
 
-## Sources
-```
-
----
-
-✅ This skill is designed to produce **sales-ready intelligence**, not just research.
-
----
-
-If you want, I can also create a **much more advanced “AI SDR for Private Equity” skill** that automatically finds:
-
-* **CFO emails**
-* **LP names**
-* **conference attendee lists**
-* **recent fundraising announcements**
-
-That version becomes extremely powerful for **outbound targeting hedge funds and PE firms.**
-
-[1]: https://www.acquisconsulting.com/our-thinking/how-ai-powered-portfolio-reporting-is-reshaping-private-equity-human-capital-equation/?utm_source=chatgpt.com "AI-Powered Portfolio Reporting in Private Equity - Acquis"
-[2]: https://www.henon.ai/commentary/ai-now-moves-to-top-priority-for-private-equity-gps?utm_source=chatgpt.com "AI Now Moves to Top Priority for Private Equity GPs"
-[3]: https://www.73strings.com/ai-for-private-equity/?utm_source=chatgpt.com "AI for Private Equity | 73 Strings"
-[4]: https://www.linkedin.com/pulse/ai-private-equity-firms-strategic-implementation-solutions-6f3ye?utm_source=chatgpt.com "AI for Private Equity Firms: Strategic Implementation Solutions for Operational Excellence and Value Creation"
