@@ -1,29 +1,45 @@
 const path = require("path");
 const fs = require("fs");
-const { execSync } = require("child_process");
 const { useAgent } = require("@nestbox-ai/functions");
 
 const PLUGIN_NAME = "accounting-c1a0cf4f";
 const PLUGIN_PATH = path.resolve(__dirname, "claude-plugin");
 const SHARED_PLUGIN_PATH = `/shared/plugins/${PLUGIN_NAME}`;
+const AGENT_PLUGIN_PATH = `/shared/agent-plugins/${PLUGIN_NAME}`;
+
+function chmodRecursive(dirPath, dirMode, fileMode) {
+  fs.chmodSync(dirPath, dirMode);
+  for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
+    const fullPath = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      chmodRecursive(fullPath, dirMode, fileMode);
+    } else {
+      fs.chmodSync(fullPath, fileMode);
+    }
+  }
+}
 
 function ensurePluginOnSharedVolume() {
   try {
     if (fs.existsSync(PLUGIN_PATH)) {
-      fs.mkdirSync(path.dirname(SHARED_PLUGIN_PATH), { recursive: true });
-      execSync(
-        `rm -rf "${SHARED_PLUGIN_PATH}" && cp -r "${PLUGIN_PATH}" "${SHARED_PLUGIN_PATH}"`,
-        { stdio: "ignore" }
-      );
-      return SHARED_PLUGIN_PATH;
+      fs.mkdirSync(path.dirname(AGENT_PLUGIN_PATH), { recursive: true });
+      if (fs.existsSync(AGENT_PLUGIN_PATH)) {
+        chmodRecursive(AGENT_PLUGIN_PATH, 0o755, 0o644);
+        fs.rmSync(AGENT_PLUGIN_PATH, { recursive: true, force: true });
+      }
+      fs.cpSync(PLUGIN_PATH, AGENT_PLUGIN_PATH, { recursive: true });
+      chmodRecursive(AGENT_PLUGIN_PATH, 0o555, 0o444);
+      return AGENT_PLUGIN_PATH;
     }
-  } catch (_) { /* Shared volume not available — fall back to local */ }
+  } catch (_) { /* copy failed */ }
+  if (fs.existsSync(AGENT_PLUGIN_PATH)) return AGENT_PLUGIN_PATH;
+  if (fs.existsSync(SHARED_PLUGIN_PATH)) return SHARED_PLUGIN_PATH;
   return PLUGIN_PATH;
 }
 
 const resolvedPluginPath = ensurePluginOnSharedVolume();
 
-const VALID_OUTPUT_FORMATS = new Set(["docx", "pptx", "xlsx"]);
+const VALID_OUTPUT_FORMATS = new Set(["docx", "pptx", "xlsx", "json", "csv", "png"]);
 
 const workspaceAgent = useAgent(async (context, events) => {
   const {
@@ -41,8 +57,10 @@ const workspaceAgent = useAgent(async (context, events) => {
       ? prompt
       : addGoCommandIfMissing(prompt);
 
-    if (output_format && VALID_OUTPUT_FORMATS.has(output_format)) {
-      dispatchedPrompt += `\n\n[OUTPUT_FORMAT: ${output_format}]`;
+    const formats = Array.isArray(output_format) ? output_format : output_format ? [output_format] : [];
+    const validFormats = formats.filter((f) => VALID_OUTPUT_FORMATS.has(f));
+    if (validFormats.length > 0) {
+      dispatchedPrompt += `\n\n[OUTPUT_FORMAT: ${validFormats.join(",")}]`;
     }
 
     // Download input files to shared volume (bypass gRPC 4MB limit)
