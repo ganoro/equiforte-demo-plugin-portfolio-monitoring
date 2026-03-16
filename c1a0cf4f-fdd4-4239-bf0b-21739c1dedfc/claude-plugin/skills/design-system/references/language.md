@@ -1,6 +1,6 @@
 # Language & Terminology Guide
 
-Standard language, terminology, and tone for all Equiforte PE CFO deliverables. Every generated document MUST follow these conventions.
+Standard language, terminology, and tone for all PE/VC deliverables. Every generated document MUST follow these conventions.
 
 ---
 
@@ -41,6 +41,7 @@ Standard language, terminology, and tone for all Equiforte PE CFO deliverables. 
 | Public Market Equivalent | PME | Fund return relative to a public index | Specify index: "1.15x PME vs. S&P 500" |
 | Net Asset Value | NAV | Fair market value of unrealized portfolio | Always include as-of date |
 | Paid-In Capital | PIC | Capital called from LPs to date | Also "Capital Called" or "Drawn Capital" |
+| Distributed to Paid-In | DPI | Same as Distributions to Paid-In | Preferred abbreviation |
 | J-Curve | — | Early negative returns before value creation | Use when explaining IRR trajectory |
 
 ### Capital Activity
@@ -84,35 +85,6 @@ Standard language, terminology, and tone for all Equiforte PE CFO deliverables. 
 | Net Debt | — | Total Debt minus Cash | Critical for leverage analysis |
 | Interest Coverage Ratio | ICR | EBITDA / Interest Expense | < 1.0x is critical |
 | Debt Service Coverage Ratio | DSCR | NOI or EBITDA / Total Debt Service | For real estate and credit |
-| Annual Recurring Revenue | ARR | Annualized value of recurring revenue contracts | SaaS/subscription businesses |
-| Net Revenue Retention | NRR | Revenue retained from existing customers including expansion | >100% indicates net expansion |
-| Customer Acquisition Cost | CAC | Total cost to acquire a new customer | Often shown as CAC payback in months |
-| Lifetime Value | LTV | Total expected revenue from a customer relationship | LTV/CAC ratio is key SaaS metric |
-
-### Risk & Geopolitical Terms (PE CFO Specific)
-
-| Term | Definition | Usage note |
-|------|------------|------------|
-| Geopolitical Risk | Political, economic, or social factors that may impact portfolio value | Always tie to specific portco impact |
-| Geographic Concentration | Revenue or operations concentrated in specific jurisdictions | Flag when >25% exposure to single jurisdiction |
-| Regulatory Risk | Risk from changes in laws, regulations, or enforcement | Distinguish enacted vs. proposed vs. speculative |
-| Tariff Exposure | Impact of trade tariffs on supply chain or market access | Quantify as % of COGS or revenue affected |
-| Election Risk | Policy uncertainty around election cycles | Model scenarios for each outcome, never predict winners |
-| Zoning Risk | Local government land use decisions affecting operations | Relevant for real estate-adjacent portcos |
-| Sanctions Risk | Exposure to sanctioned countries, entities, or individuals | Compliance-critical — flag immediately |
-| Key Person Risk | Dependency on specific individuals for value creation | Flag for management assessment |
-| Customer Concentration | Revenue dependency on top customers | Express as % of revenue from top 1, 5, 10 customers |
-
-### Value Creation Terms
-
-| Term | Definition | Usage note |
-|------|------------|------------|
-| Value Creation Bridge | Decomposition of total value change into components | Revenue growth, margin expansion, multiple expansion, leverage |
-| Organic Growth | Revenue growth excluding acquisitions | Distinguish from total/inorganic |
-| Add-on Acquisition | Bolt-on M&A to existing platform investment | Track integration status and synergy realization |
-| Multiple Expansion | Increase in valuation multiple from entry to current/exit | Separate from operational value creation |
-| Margin Expansion | Improvement in EBITDA margin from entry to current | Decompose into pricing, mix, and cost drivers |
-| Exit Readiness | Degree to which a portco is prepared for sale/IPO | Assess: financials, management, legal, operational |
 
 ### Reporting Periods
 
@@ -142,39 +114,23 @@ Every fact or metric in a report must carry a confidence indicator. Use these co
 
 Display as superscript or footnote: "EBITDA: $42.3M ^(R)" or "EBITDA: $42.3M [Reported]"
 
-### Source Attribution for Credible Forecasts
-
-When citing external forecasts or analysis, always attribute to the specific source:
-
-| Source Type | Citation Format | Example |
-|-------------|----------------|---------|
-| Investment bank research | "[Bank] [Analyst], [Date]" | "Goldman Sachs Equity Research, Jan 2026" |
-| Economic forecast | "[Institution], [Publication], [Date]" | "IMF World Economic Outlook, Oct 2025" |
-| Industry report | "[Firm], [Report Name], [Date]" | "Bain & Company, Global PE Report 2026" |
-| Government data | "[Agency], [Dataset], [Date]" | "BLS, Nonfarm Payrolls, Feb 2026" |
-| Rating agency | "[Agency], [Report Type], [Date]" | "Moody's, Sector Outlook, Q1 2026" |
-
 ---
 
 ## Standard Notices
 
 ### Confidentiality Notice (Short)
 
-> CONFIDENTIAL — Equiforte
+> CONFIDENTIAL
 
 Use on every page header, slide footer, and Excel print header.
 
 ### Confidentiality Notice (Full — Title Page)
 
-> This document is confidential and intended solely for the use of the intended recipient(s). It contains proprietary information and may not be reproduced, distributed, or disclosed to any third party without the prior written consent of Equiforte. Any unauthorized use, disclosure, or distribution is strictly prohibited.
+> This document is confidential and intended solely for the use of the intended recipient(s). It contains proprietary information and may not be reproduced, distributed, or disclosed to any third party without the prior written consent of [Firm Name]. Any unauthorized use, disclosure, or distribution is strictly prohibited.
 
 ### Disclaimer (Standard — Last Page)
 
-> This document has been prepared by Equiforte AI for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal. The information contained herein is based on data obtained from sources believed to be reliable, but no representation or warranty, express or implied, is made as to its accuracy, completeness, or timeliness. Forward-looking statements are based on current expectations and assumptions and are subject to change without notice. AI-generated content should be reviewed by qualified professionals before use in investment decisions.
-
-### AI Transparency Notice
-
-> Prepared by Equiforte AI. This analysis incorporates data from the sources cited herein. Where historical events are used as precedent, this is noted explicitly. All forward-looking assessments reflect current conditions and assumptions as of the stated date.
+> This document has been prepared for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal. The information contained herein is based on data obtained from sources believed to be reliable, but no representation or warranty, express or implied, is made as to its accuracy, completeness, or timeliness. Forward-looking statements are based on current expectations and assumptions and are subject to change without notice.
 
 ### Data Source Attribution
 
@@ -209,7 +165,7 @@ Always cite the source inline or as a table footnote:
 - IRR: one decimal place (14.2%), two for precision (14.23%)
 - Multiples: two decimal places with x suffix (1.85x, 2.03x)
 - Margins: one decimal place (23.4%)
-- Changes: include sign (+2.1%, -1.3%), use parentheses for negative in tables: (1.3%)
+- Changes: include sign (+2.1%, −1.3%), use parentheses for negative in tables: (1.3%)
 
 ---
 
@@ -225,4 +181,4 @@ Always cite the source inline or as a table footnote:
 | Going forward | Prospectively, in subsequent periods | Business cliche |
 | Leverage (as verb) | Utilize, employ, use | Ambiguous in finance (noun = debt) |
 | Synergies | Specify: "cost savings of $X.XM" | Overused, unquantified |
-| Upside/downside | Quantify: "+12% in bull case / -8% in bear case" | Vague without range |
+| Upside/downside | Quantify: "+12% in bull case / −8% in bear case" | Vague without range |

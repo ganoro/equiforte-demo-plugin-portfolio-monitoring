@@ -131,11 +131,11 @@ Before executing any command, follow these rules:
 
 When the routed command produces a file deliverable, read these design references BEFORE generating:
 
-1. `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/tokens.md` — colors, typography, number formatting
-2. `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/components.md` — title page, table, KPI card, chart patterns
-3. `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/language.md` — PE/VC terminology, tone, disclaimers
-4. `/shared/plugins/portfolio-operations-aef49986/brand/assets/brand-overrides.json` — firm name, confidentiality notice
-5. Copy logo into workspace: `cp /shared/plugins/portfolio-operations-aef49986/brand/assets/logo.png ./logo.png 2>/dev/null || true`
+1. `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` — colors, typography, number formatting
+2. `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` — title page, table, KPI card, chart patterns
+3. `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/language.md` — PE/VC terminology, tone, disclaimers
+4. `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+5. Copy logo into workspace: `cp /shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png ./logo.png 2>/dev/null || true`
 
 ## Critical Rules
 

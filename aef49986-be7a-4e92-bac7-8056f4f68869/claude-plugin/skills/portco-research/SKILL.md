@@ -176,15 +176,15 @@ If not available, note "Not publicly available" in the notes field.
 ## Step 4: Generate Output
 
 Before generating any file, read the design system references:
-1. Read `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/tokens.md` for colors, fonts, number formatting
-2. Read `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/components.md` for component patterns
-3. Read `/shared/plugins/portfolio-operations-aef49986/brand/assets/brand-overrides.json` for firm name and confidentiality notice
-4. Copy logo: `cp /shared/plugins/portfolio-operations-aef49986/brand/assets/logo.png ./logo.png 2>/dev/null || true`
+1. Read `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` for colors, fonts, number formatting
+2. Read `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` for component patterns
+3. Read `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` for firm name and confidentiality notice
+4. Copy logo: `cp /shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png ./logo.png 2>/dev/null || true`
 
 Then read the appropriate generator skill:
-- **Excel (.xlsx)** → read `/shared/plugins/portfolio-operations-aef49986/skills/output-generation/xlsx-generator/SKILL.md`
-- **PowerPoint (.pptx)** → read `/shared/plugins/portfolio-operations-aef49986/skills/output-generation/pptx-generator/SKILL.md`
-- **PDF** → read `/shared/plugins/portfolio-operations-aef49986/skills/output-generation/docx-generator/SKILL.md` (use reportlab or fpdf2 for PDF)
+- **Excel (.xlsx)** → read `/shared/plugins/{{PLUGIN_NAME}}/skills/output-generation/xlsx-generator/SKILL.md`
+- **PowerPoint (.pptx)** → read `/shared/plugins/{{PLUGIN_NAME}}/skills/output-generation/pptx-generator/SKILL.md`
+- **PDF** → read `/shared/plugins/{{PLUGIN_NAME}}/skills/output-generation/docx-generator/SKILL.md` (use reportlab or fpdf2 for PDF)
 
 ### Excel Output Structure (ILPA-aligned)
 Reproduce the following tabs from the ILPA PortCo Template:

@@ -39,6 +39,21 @@ You are a document generation specialist. Your job is to transform structured re
 - Verify output file is valid (non-zero size, correct format)
 - Save outputs to workspace root or user-specified path
 
+## Available Scripts
+
+Each generator skill includes utility scripts for the unpack/edit/pack workflow:
+
+- **Unpack**: `python scripts/office/unpack.py file.ext unpacked/` — extracts ZIP, pretty-prints XML
+- **Pack**: `python scripts/office/pack.py unpacked/ output.ext --original file.ext` — validates and repacks
+- **Validate**: `python scripts/office/validate.py file.ext` — schema validation
+- **LibreOffice**: `python scripts/office/soffice.py --headless --convert-to pdf file.ext` — format conversion
+- **PPTX thumbnails**: `python scripts/thumbnail.py presentation.pptx` — visual slide grid
+- **DOCX comments**: `python scripts/comment.py unpacked/ ID "text"` — add comments to documents
+- **DOCX accept changes**: `python scripts/accept_changes.py input.docx output.docx`
+- **XLSX recalculate**: `python scripts/recalc.py output.xlsx` — mandatory after formula changes
+- **PDF form check**: `python scripts/check_fillable_fields.py form.pdf` — detect fillable fields
+- **PDF to images**: `python scripts/convert_pdf_to_images.py input.pdf` — page-by-page conversion
+
 ## Output Formats
 
 | Request | Format | Generator Skill |
@@ -47,5 +62,6 @@ You are a document generation specialist. Your job is to transform structured re
 | Board Deck | PPTX | pptx-generator |
 | IC Memo | DOCX | docx-generator |
 | Financial Model | XLSX | xlsx-generator |
+| PDF Form Fill | PDF | pdf |
 | Quick Summary | Markdown | (direct write) |
 | Presentation | PPTX | pptx-generator |

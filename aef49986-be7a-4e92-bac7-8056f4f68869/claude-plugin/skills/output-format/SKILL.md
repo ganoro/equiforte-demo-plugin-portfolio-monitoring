@@ -34,13 +34,13 @@ Perform the full analysis as requested. Present all findings, tables, and narrat
 ### Step 2. Read the Design System
 
 Before writing any generation script, read these design references:
-- `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/tokens.md` — colors, typography, number formatting
-- `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/components.md` — title page, table, chart patterns
-- `/shared/plugins/portfolio-operations-aef49986/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` — colors, typography, number formatting
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` — title page, table, chart patterns
+- `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` — firm name, confidentiality notice
 
 Copy the logo into the workspace:
 ```bash
-cp /shared/plugins/portfolio-operations-aef49986/brand/assets/logo.png ./logo.png 2>/dev/null || true
+cp /shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png ./logo.png 2>/dev/null || true
 ```
 
 ### Step 3. Generate the File

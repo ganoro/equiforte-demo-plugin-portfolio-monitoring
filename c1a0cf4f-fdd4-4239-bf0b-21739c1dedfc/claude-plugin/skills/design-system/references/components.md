@@ -13,9 +13,9 @@ The first thing the reader sees. Must convey: what, who, when, and confidentiali
 ```
 ┌─────────────────────────────────────────┐
 │                                         │
-│  [EQUIFORTE Logo — blue wordmark]       │
+│  [Logo — if brand/assets/logo.png]      │
 │                                         │
-│  REPORT TITLE                           │  ← primary (#3563AC), Bold, 28pt (DOCX) / 32pt (PPTX)
+│  REPORT TITLE                           │  ← primary, Bold, 28pt (DOCX) / 32pt (PPTX)
 │  Report Subtitle / Type                 │  ← text-secondary, 16pt
 │                                         │
 │  Fund Name or Firm Name                 │  ← text-primary, 14pt
@@ -30,7 +30,7 @@ The first thing the reader sees. Must convey: what, who, when, and confidentiali
 ### Tokens
 
 - Background: `background` (white)
-- Title: `primary` (#3563AC) + Bold
+- Title: `primary` + Bold
 - Rule line: `border` or `primary`, 1pt
 - Confidentiality: `text-muted`, uppercase, tracked (letter-spacing +0.5pt)
 
@@ -61,7 +61,7 @@ Separates major content areas. Provides clear visual hierarchy.
 
 ```
 ─────────────────────────────────────────   ← border-strong, 2pt rule above
-SECTION TITLE                               ← primary (#3563AC), Bold, H1 size
+SECTION TITLE                               ← primary, Bold, H1 size
 Brief description or context (optional)     ← text-secondary, body size
 ```
 
@@ -78,7 +78,7 @@ Brief description or context (optional)     ← text-secondary, body size
 
 ### PPTX
 
-- Title bar: full-width rectangle at top of slide, filled with `primary` (#3563AC), white text
+- Title bar: full-width rectangle at top of slide, filled with `primary`, white text
 - Title text: `text-inverse`, 24pt Bold, left-aligned with 0.5in left padding
 
 ---
@@ -100,7 +100,7 @@ The most common component. Used in every format.
 
 ```
 ┌────────────┬──────────┬──────────┬──────────┐
-│ HEADER 1   │ HEADER 2 │ HEADER 3 │ HEADER 4 │  ← primary (#3563AC) fill, text-inverse, Bold
+│ HEADER 1   │ HEADER 2 │ HEADER 3 │ HEADER 4 │  ← primary fill, text-inverse, Bold
 ├────────────┼──────────┼──────────┼──────────┤
 │ Row 1 data │ value    │ value    │ value    │  ← background (white)
 │ Row 2 data │ value    │ value    │ value    │  ← surface (alternating)
@@ -115,7 +115,7 @@ The most common component. Used in every format.
 
 | Element | Fill | Text | Border |
 |---------|------|------|--------|
-| Header row | `primary` (#3563AC) | `text-inverse`, Bold 10pt | none |
+| Header row | `primary` | `text-inverse`, Bold 10pt | none |
 | Odd data rows | `background` | `text-primary`, 10pt | `border-light` |
 | Even data rows | `surface` | `text-primary`, 10pt | `border-light` |
 | Total / summary row | `background` | `text-primary`, Bold | `border-strong` top |
@@ -155,7 +155,7 @@ Use text-color-only by default. Add background fill only for dashboards or KPI s
 
 ### PPTX Specifics
 
-- Max 8-10 rows per slide table; split across slides if needed
+- Max 8–10 rows per slide table; split across slides if needed
 - Table width: slide width minus 1.0 in margins
 - Cell padding: 0.05 in vertical, 0.1 in horizontal
 
@@ -181,11 +181,11 @@ Highlight a single key metric prominently. Used in dashboards, executive summari
 - Card border: `border`, 1pt, rounded corners (PPTX) or simple box (DOCX)
 - Label: `text-secondary`, uppercase, 9pt
 - Value: status-colored (positive/negative/text-primary), Bold, 24pt (DOCX) / 36pt (PPTX)
-- Change indicator: directional color (`positive` for +, `negative` for -), 8pt
+- Change indicator: directional color (`positive` for +, `negative` for −), 8pt
 
 ### Layout
 
-- 3-4 cards in a row for PPTX (equal width, 0.15in gap)
+- 3–4 cards in a row for PPTX (equal width, 0.15in gap)
 - For DOCX: inline table with borderless cells, or side-by-side text frames
 - For XLSX: merged cells with centered large-font value, label in row above
 
@@ -199,7 +199,7 @@ Draw attention to key findings, risk flags, or important notes.
 
 | Variant | Left border color | Background | Icon prefix |
 |---------|------------------|------------|-------------|
-| Info | `accent` (#3563AC) | `background` | none |
+| Info | `accent` | `background` | none |
 | Positive | `positive` | `positive-bg` | none |
 | Warning | `warning` | `warning-bg` | none |
 | Critical | `critical` | `critical-bg` | none |
@@ -311,33 +311,3 @@ Inline status indicators for tables and text.
 - XLSX: Conditional formatting rules on status column
 - DOCX: Inline bold text with color
 - PPTX: Small rounded rectangle shapes or colored text
-
----
-
-## 11. Risk/Opportunity Matrix (NEW — PE CFO)
-
-Visual representation of weighted risk and opportunity scores.
-
-### Structure
-
-```
-┌──────────────┬────────────────────────────┐
-│              │      IMPACT                │
-│              │  Low    Medium    High      │
-├──────────────┼────────────────────────────┤
-│ PROBABILITY  │                            │
-│   High       │  ○ Mgn   ● Act    ● IMM   │
-│   Medium     │  ○ Mon   ○ Mgn    ● Act   │
-│   Low        │  ○ Acc   ○ Mon    ○ Mgn   │
-└──────────────┴────────────────────────────┘
-```
-
-Key: IMM = Immediate, Act = Action Required, Mgn = Manage, Mon = Monitor, Acc = Accept
-
-### Tokens
-
-- High-risk cells: `negative-bg` background
-- Medium-risk cells: `warning-bg` background
-- Low-risk cells: `positive-bg` background
-- Grid: `border`, 1pt
-- Labels: `text-primary`, Bold

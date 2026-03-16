@@ -1,18 +1,50 @@
 ---
-description: "Generate PowerPoint presentations (PPTX) from structured report data using python-pptx. Creates professional PE/VC presentations with consistent formatting, charts, and tables. Handles board decks, LP summaries, and IC presentations. Always read the design-system skill first."
+description: "Use this skill any time a .pptx file is involved — as input, output, or both. Includes creating slide decks, reading/parsing .pptx files, editing existing presentations, working with templates. Also generates PE/VC presentations with consistent formatting, charts, and tables. Always read the design-system skill first for PE/VC outputs."
 ---
 
 # PPTX Generator
 
-Generate PowerPoint presentations from structured report data using `python-pptx`.
+## Quick Reference
 
-**Before generating, read the design system files:**
-- `/shared/plugins/sales-346daa1b/skills/design-system/references/tokens.md` — colors, typography, spacing
-- `/shared/plugins/sales-346daa1b/skills/design-system/references/components.md` — component patterns
-- `/shared/plugins/sales-346daa1b/skills/design-system/references/language.md` — terminology, disclaimers
-- `/shared/plugins/sales-346daa1b/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+| Task | Guide |
+|------|-------|
+| Read/analyze content | `python -m markitdown presentation.pptx` |
+| Edit or create from template | Read [editing.md](editing.md) |
+| Create from scratch | Read [pptxgenjs.md](pptxgenjs.md) |
 
-## Process
+## Reading Content
+
+```bash
+# Text extraction
+python -m markitdown presentation.pptx
+
+# Visual overview (slide thumbnails)
+python scripts/thumbnail.py presentation.pptx
+
+# Raw XML access
+python scripts/office/unpack.py presentation.pptx unpacked/
+```
+
+## Editing Workflow
+
+**Read [editing.md](editing.md) for full details.**
+
+1. Analyze template with `scripts/thumbnail.py`
+2. Unpack → manipulate slides → edit content → clean → pack
+
+## Creating from Scratch
+
+**Read [pptxgenjs.md](pptxgenjs.md) for full details.**
+
+Use PptxGenJS when no template or reference presentation is available.
+
+## Report Generation
+
+**Before generating reports, read the design system files:**
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` — colors, typography, spacing
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` — component patterns
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/language.md` — terminology, disclaimers
+- `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` — firm name, confidentiality notice
 
 ### Step 1 — Gather Content
 
@@ -50,7 +82,7 @@ CRITICAL     = RGBColor(0x8B, 0x00, 0x00)
 CHART_SERIES = [PRIMARY, ACCENT, RGBColor(0x5B,0x9B,0xD5), RGBColor(0xA5,0xC8,0xE1), POSITIVE, WARNING]
 
 # ── Logo ──
-LOGO_SRC = "/shared/plugins/sales-346daa1b/brand/assets/logo.png"
+LOGO_SRC = "/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png"
 LOGO_LOCAL = "logo.png"
 if os.path.exists(LOGO_SRC):
     shutil.copy2(LOGO_SRC, LOGO_LOCAL)
@@ -70,6 +102,52 @@ ls -la output/report.pptx
 ```
 
 Save output to `output/report.pptx`.
+
+## QA (Required)
+
+**Assume there are problems. Your job is to find them.**
+
+### Content QA
+
+```bash
+python -m markitdown output.pptx
+# Check for leftover placeholder text:
+python -m markitdown output.pptx | grep -iE "xxxx|lorem|ipsum|this.*(page|slide).*layout"
+```
+
+### Visual QA
+
+Convert slides to images, then inspect visually using a subagent:
+
+```bash
+python scripts/office/soffice.py --headless --convert-to pdf output.pptx
+pdftoppm -jpeg -r 150 output.pdf slide
+```
+
+This creates `slide-01.jpg`, `slide-02.jpg`, etc. Inspect for overlapping elements, text overflow, spacing issues, low contrast.
+
+### Verification Loop
+
+1. Generate slides → Convert to images → Inspect
+2. List issues found
+3. Fix issues
+4. Re-verify affected slides
+5. Repeat until clean
+
+## Converting to Images
+
+```bash
+python scripts/office/soffice.py --headless --convert-to pdf output.pptx
+pdftoppm -jpeg -r 150 output.pdf slide
+```
+
+## Dependencies
+
+- `pip install "markitdown[pptx]"` — text extraction
+- `pip install Pillow` — thumbnail grids
+- `npm install -g pptxgenjs` — creating from scratch
+- LibreOffice (`soffice`) — PDF conversion (auto-configured via `scripts/office/soffice.py`)
+- Poppler (`pdftoppm`) — PDF to images
 
 ## Slide Types
 

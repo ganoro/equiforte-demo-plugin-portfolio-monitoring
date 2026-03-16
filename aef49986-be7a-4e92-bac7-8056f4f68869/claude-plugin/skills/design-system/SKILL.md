@@ -15,7 +15,7 @@ All generated deliverables MUST follow this design system.
 
 The plugin is mounted at:
 ```
-/shared/plugins/portfolio-operations-aef49986
+/shared/plugins/{{PLUGIN_NAME}}
 ```
 
 All paths below are relative to this root. To read any file, prepend this path.
@@ -26,14 +26,14 @@ Before generating any output with a title page, check for these files:
 
 | File | Path | Purpose |
 |------|------|---------|
-| Logo | `/shared/plugins/portfolio-operations-aef49986/brand/assets/logo.png` | Primary logo for title pages and headers |
-| Logo (square) | `/shared/plugins/portfolio-operations-aef49986/brand/assets/logo-sq.png` | Square variant for footers and watermarks |
-| Brand overrides | `/shared/plugins/portfolio-operations-aef49986/brand/assets/brand-overrides.json` | Firm name, custom colors, confidentiality notice |
+| Logo | `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png` | Primary logo for title pages and headers |
+| Logo (square) | `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo-sq.png` | Square variant for footers and watermarks |
+| Brand overrides | `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` | Firm name, custom colors, confidentiality notice |
 
 To use the logo in a Python generation script, copy it into the workspace first:
 ```python
 import shutil, os
-PLUGIN = "/shared/plugins/portfolio-operations-aef49986"
+PLUGIN = "/shared/plugins/{{PLUGIN_NAME}}"
 logo_src = os.path.join(PLUGIN, "brand/assets/logo.png")
 if os.path.exists(logo_src):
     shutil.copy2(logo_src, "logo.png")
@@ -44,13 +44,13 @@ if os.path.exists(logo_src):
 Read these before generating output:
 
 - **Color palette, typography, spacing, number formatting**:
-  `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/tokens.md`
+  `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md`
 
 - **Component patterns (tables, KPI cards, title pages, charts, callouts)**:
-  `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/components.md`
+  `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md`
 
 - **PE/VC language dictionary, terminology, tone, disclaimers**:
-  `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/language.md`
+  `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/language.md`
 
 ## Core Principles
 
@@ -90,8 +90,8 @@ Read these before generating output:
 
 ## Applying the System
 
-1. Read `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/tokens.md` for exact color and typography values
-2. Read `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/components.md` for the component being generated
-3. Read `/shared/plugins/portfolio-operations-aef49986/skills/design-system/references/language.md` for terminology and tone
-4. Read `/shared/plugins/portfolio-operations-aef49986/brand/assets/brand-overrides.json` for firm name and confidentiality notice
-5. Copy `/shared/plugins/portfolio-operations-aef49986/brand/assets/logo.png` into the workspace and include it on the title page
+1. Read `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` for exact color and typography values
+2. Read `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` for the component being generated
+3. Read `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/language.md` for terminology and tone
+4. Read `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` for firm name and confidentiality notice
+5. Copy `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png` into the workspace and include it on the title page

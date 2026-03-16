@@ -1,17 +1,67 @@
 ---
-description: "Generate Excel workbooks (XLSX) from structured financial data using openpyxl. Creates formatted spreadsheets with multiple tabs for fund performance, portfolio data, cash flows, and waterfall calculations. Includes formulas, conditional formatting, and charts. Always read the design-system skill first."
+description: "Use this skill any time a spreadsheet file is the primary input or output — .xlsx, .xlsm, .csv, or .tsv files. Includes creating, reading, editing, formatting, charting, and fixing spreadsheets. Also generates PE/VC financial workbooks with fund performance, portfolio data, cash flows, and waterfall calculations. Always read the design-system skill first for PE/VC outputs."
 ---
 
 # XLSX Generator
 
-Generate Excel workbooks from structured financial data using `openpyxl`.
+## Requirements for All Excel Files
 
-**Before generating, read the design system files:**
-- `/shared/plugins/accounting-c1a0cf4f/skills/design-system/references/tokens.md` — colors, typography, number formatting
-- `/shared/plugins/accounting-c1a0cf4f/skills/design-system/references/components.md` — table patterns, conditional formatting
-- `/shared/plugins/accounting-c1a0cf4f/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+- Use a consistent, professional font (e.g., Calibri, Arial)
+- Every Excel model MUST be delivered with ZERO formula errors (#REF!, #DIV/0!, #VALUE!, #N/A, #NAME?)
+- When updating existing templates, EXACTLY match existing format and conventions
 
-## Process
+## CRITICAL: Use Formulas, Not Hardcoded Values
+
+Always use Excel formulas instead of calculating values in Python and hardcoding them:
+
+```python
+# ❌ WRONG
+total = df['Sales'].sum()
+sheet['B10'] = total
+
+# ✅ CORRECT
+sheet['B10'] = '=SUM(B2:B9)'
+```
+
+## Common Workflow
+
+1. **Choose tool**: pandas for data, openpyxl for formulas/formatting
+2. **Create/Load**: Create new workbook or load existing file
+3. **Modify**: Add/edit data, formulas, and formatting
+4. **Save**: Write to file
+5. **Recalculate formulas (MANDATORY)**: `python scripts/recalc.py output.xlsx`
+6. **Verify and fix errors**: Check JSON output for error details
+
+The `scripts/recalc.py` script:
+- Automatically sets up LibreOffice macro on first run
+- Recalculates all formulas in all sheets
+- Scans ALL cells for Excel errors
+- Returns JSON with detailed error locations and counts
+- Works on both Linux and macOS
+
+## Financial Models Color Coding
+
+- **Blue text** (0,0,255): Hardcoded inputs
+- **Black text** (0,0,0): ALL formulas and calculations
+- **Green text** (0,128,0): Links from other worksheets
+- **Red text** (255,0,0): External links to other files
+- **Yellow background** (255,255,0): Key assumptions needing attention
+
+## Number Formatting Standards
+
+- **Years**: Format as text strings ("2024" not "2,024")
+- **Currency**: `$#,##0` format; ALWAYS specify units in headers ("Revenue ($mm)")
+- **Zeros**: Format to display as "-" (e.g., `$#,##0;($#,##0);-`)
+- **Percentages**: Default to `0.0%`
+- **Multiples**: Format as `0.0x`
+- **Negative numbers**: Use parentheses `(123)` not minus `-123`
+
+## PE/VC Report Generation
+
+**Before generating PE/VC reports, read the design system files:**
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` — colors, typography, number formatting
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` — table patterns, conditional formatting
+- `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` — firm name, confidentiality notice
 
 ### Step 1 — Gather Data
 
@@ -50,7 +100,7 @@ BORDER_STRONG  = Border(bottom=Side(style='thin', color='B0B8C1'))
 TAB_COLOR      = '2E75B6'  # accent
 
 # ── Logo ──
-LOGO_SRC = "/shared/plugins/accounting-c1a0cf4f/brand/assets/logo.png"
+LOGO_SRC = "/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png"
 LOGO_LOCAL = "logo.png"
 if os.path.exists(LOGO_SRC):
     shutil.copy2(LOGO_SRC, LOGO_LOCAL)
@@ -97,6 +147,8 @@ def add_cover_sheet(wb, title, subtitle, as_of_date):
 pip install openpyxl 2>/dev/null
 python generate_xlsx.py
 ls -la output/report.xlsx
+# MANDATORY: Recalculate formulas
+python scripts/recalc.py output/report.xlsx
 ```
 
 Save output to `output/report.xlsx`.

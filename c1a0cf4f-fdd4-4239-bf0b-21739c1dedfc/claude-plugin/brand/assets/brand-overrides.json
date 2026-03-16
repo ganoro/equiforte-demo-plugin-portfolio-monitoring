@@ -1,16 +1,9 @@
 {
-  "firm_name": "Equiforte",
-  "firm_name_short": "Equiforte",
-  "tagline": "AI-Powered Private Equity Intelligence",
-  "logo": "logo.png",
+  "firm_name": "Acme Capital Partners",
   "colors": {
-    "primary": "#3563AC",
-    "primary_light": "#4A7BC4",
-    "accent": "#3563AC",
-    "accent_light": "#5B8DD4",
-    "surface": "#F4F6FA",
-    "border": "#D4DCEA"
+    "primary": "#1B3A5C",
+    "accent": "#2E75B6"
   },
-  "confidentiality_notice": "CONFIDENTIAL — Equiforte — For Authorized Recipients Only",
-  "disclaimer": "This document was prepared by Equiforte AI for informational purposes only. It does not constitute investment advice, an offer to sell, or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All financial data should be independently verified before making investment decisions. AI-generated content should be reviewed by qualified professionals."
+  "confidentiality_notice": "CONFIDENTIAL — For Authorized Recipients Only",
+  "disclaimer": "This document is provided for informational purposes only..."
 }

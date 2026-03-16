@@ -1,20 +1,113 @@
 ---
-description: "Generate Word documents (DOCX) from structured report data using python-docx. Creates professional PE/VC reports with consistent formatting, tables, headers, and footers. Handles LP reports, IC memos, and analysis documents. Always read the design-system skill first."
+description: "Use this skill whenever creating, reading, editing, or manipulating Word documents (.docx files). Triggers include: any mention of 'Word doc', '.docx', or requests to produce professional documents with tables of contents, headings, page numbers, tracked changes, or comments. Also generates PE/VC reports with consistent formatting, tables, headers, and footers. Always read the design-system skill first for PE/VC outputs."
 ---
 
 # DOCX Generator
 
-Generate Word documents from structured report data using `python-docx`.
+A .docx file is a ZIP archive containing XML files.
 
-**Before generating, read the design system files:**
-- `/shared/plugins/accounting-c1a0cf4f/skills/design-system/references/tokens.md` — colors, typography, spacing
-- `/shared/plugins/accounting-c1a0cf4f/skills/design-system/references/components.md` — component patterns
-- `/shared/plugins/accounting-c1a0cf4f/skills/design-system/references/language.md` — terminology, disclaimers
-- `/shared/plugins/accounting-c1a0cf4f/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+## Quick Reference
 
-Copy the logo into the workspace: `cp /shared/plugins/accounting-c1a0cf4f/brand/assets/logo.png ./logo.png 2>/dev/null || true`
+| Task | Approach |
+|------|----------|
+| Read/analyze content | `pandoc` or unpack for raw XML |
+| Create new document | Use `docx-js` (`npm install -g docx`) — see Creating section below |
+| Edit existing document | Unpack → edit XML → repack |
 
-## Process
+### Converting .doc to .docx
+
+```bash
+python scripts/office/soffice.py --headless --convert-to docx document.doc
+```
+
+### Reading Content
+
+```bash
+# Text extraction with tracked changes
+pandoc --track-changes=all document.docx -o output.md
+
+# Raw XML access
+python scripts/office/unpack.py document.docx unpacked/
+```
+
+### Converting to Images
+
+```bash
+python scripts/office/soffice.py --headless --convert-to pdf document.docx
+pdftoppm -jpeg -r 150 document.pdf page
+```
+
+### Accepting Tracked Changes
+
+```bash
+python scripts/accept_changes.py input.docx output.docx
+```
+
+## Creating New Documents
+
+Generate .docx files with JavaScript (`npm install -g docx`), then validate:
+
+```bash
+python scripts/office/validate.py doc.docx
+```
+
+If validation fails, unpack, fix the XML, and repack.
+
+### Critical Rules for docx-js
+
+- **Set page size explicitly** — defaults to A4; use US Letter (12240 x 15840 DXA) for US documents
+- **Landscape: pass portrait dimensions** — docx-js swaps width/height internally
+- **Never use `\n`** — use separate Paragraph elements
+- **Never use unicode bullets** — use `LevelFormat.BULLET` with numbering config
+- **PageBreak must be in Paragraph** — standalone creates invalid XML
+- **ImageRun requires `type`** — always specify png/jpg/etc
+- **Always set table `width` with DXA** — never use `WidthType.PERCENTAGE` (breaks in Google Docs)
+- **Tables need dual widths** — `columnWidths` array AND cell `width`, both must match
+- **Use `ShadingType.CLEAR`** — never SOLID for table shading
+- **Never use tables as dividers/rules** — use border on a Paragraph instead
+- **TOC requires HeadingLevel only** — no custom styles on heading paragraphs
+
+## Editing Existing Documents
+
+**Follow all 3 steps in order.**
+
+### Step 1: Unpack
+```bash
+python scripts/office/unpack.py document.docx unpacked/
+```
+
+### Step 2: Edit XML
+
+Edit files in `unpacked/word/`. Use the Edit tool directly for string replacement — do not write Python scripts.
+
+**Smart quotes:** Use XML entities for professional typography:
+| Entity | Character |
+|--------|-----------|
+| `&#x2018;` | ' (left single) |
+| `&#x2019;` | ' (right single / apostrophe) |
+| `&#x201C;` | " (left double) |
+| `&#x201D;` | " (right double) |
+
+**Adding comments:**
+```bash
+python scripts/comment.py unpacked/ 0 "Comment text"
+python scripts/comment.py unpacked/ 1 "Reply text" --parent 0
+```
+
+### Step 3: Pack
+```bash
+python scripts/office/pack.py unpacked/ output.docx --original document.docx
+```
+
+## PE/VC Report Generation
+
+**Before generating PE/VC reports, read the design system files:**
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/tokens.md` — colors, typography, spacing
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/components.md` — component patterns
+- `/shared/plugins/{{PLUGIN_NAME}}/skills/design-system/references/language.md` — terminology, disclaimers
+- `/shared/plugins/{{PLUGIN_NAME}}/brand/assets/brand-overrides.json` — firm name, confidentiality notice
+
+Copy the logo into the workspace: `cp /shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png ./logo.png 2>/dev/null || true`
 
 ### Step 1 — Gather Content
 
@@ -44,7 +137,7 @@ NEGATIVE    = RGBColor(0xC4, 0x26, 0x1D)
 CRITICAL    = RGBColor(0x8B, 0x00, 0x00)
 
 # ── Logo ──
-LOGO_SRC = "/shared/plugins/accounting-c1a0cf4f/brand/assets/logo.png"
+LOGO_SRC = "/shared/plugins/{{PLUGIN_NAME}}/brand/assets/logo.png"
 LOGO_LOCAL = "logo.png"
 if os.path.exists(LOGO_SRC):
     shutil.copy2(LOGO_SRC, LOGO_LOCAL)
@@ -64,6 +157,13 @@ ls -la output/report.docx
 ```
 
 Save output to `output/report.docx`.
+
+## Dependencies
+
+- **pandoc** — text extraction
+- **docx** — `npm install -g docx` (new documents)
+- **LibreOffice** — PDF conversion (auto-configured via `scripts/office/soffice.py`)
+- **Poppler** — `pdftoppm` for images
 
 ## Document Structure
 

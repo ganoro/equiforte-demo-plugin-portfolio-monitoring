@@ -1,6 +1,6 @@
-# Brand Configuration — Equiforte
+# Brand Configuration
 
-This directory holds Equiforte brand assets. These customize the look and language of all generated reports.
+This directory holds customer-facing brand assets. Place files here to customize the look and language of all generated reports.
 
 ## Assets
 
@@ -8,29 +8,23 @@ Place brand files in `assets/`:
 
 | File | Purpose | Format |
 |------|---------|--------|
-| `logo.png` | Equiforte blue wordmark for report headers and title pages | PNG, transparent background, min 300px wide |
+| `logo.png` | Primary logo for report headers and title pages | PNG, transparent background, min 300px wide |
 | `logo-dark.png` | Logo variant for dark backgrounds (optional) | PNG, transparent background |
-| `logo-sq.png` | Square icon for footers and watermarks (optional) | PNG, 64x64px or 128x128px |
-
-## Brand Colors
-
-Equiforte's primary brand color is **#3563AC** (the bold blue from the wordmark logo).
+| `icon.png` | Small icon for footers and watermarks (optional) | PNG, 64×64px or 128×128px |
 
 ## Customization
 
-The `brand-overrides.json` file in `assets/` controls firm name, colors, and legal notices:
+To override default colors, typography, or language for a specific client deployment, create a `brand-overrides.json` file in this directory:
 
 ```json
 {
-  "firm_name": "Equiforte",
-  "firm_name_short": "Equiforte",
-  "tagline": "AI-Powered Private Equity Intelligence",
+  "firm_name": "Acme Capital Partners",
   "colors": {
-    "primary": "#3563AC",
-    "accent": "#3563AC"
+    "primary": "#1B3A5C",
+    "accent": "#2E75B6"
   },
-  "confidentiality_notice": "CONFIDENTIAL — Equiforte — For Authorized Recipients Only",
-  "disclaimer": "..."
+  "confidentiality_notice": "CONFIDENTIAL — For Authorized Recipients Only",
+  "disclaimer": "This document is provided for informational purposes only..."
 }
 ```
 
