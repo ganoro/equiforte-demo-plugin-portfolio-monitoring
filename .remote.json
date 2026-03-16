@@ -1,8 +1,8 @@
 {
-  "remoteUrl": "git@github.com:NestboxAI/nestbox-ai-equiforte-operating-model-demo.git",
+  "remoteUrl": "git@github.com:ganoro/equiforte-demo-plugin-portfolio-monitoring.git",
   "defaultBranch": "main",
   "syncEnabled": false,
-  "lastSyncAt": "2026-03-10T20:21:33.141Z",
-  "lastSyncStatus": "success",
+  "lastSyncAt": null,
+  "lastSyncStatus": "never",
   "lastSyncError": null
 }
