@@ -2,7 +2,7 @@
   "remoteUrl": "git@github.com:ganoro/equiforte-demo-plugin-portfolio-monitoring.git",
   "defaultBranch": "main",
   "syncEnabled": false,
-  "lastSyncAt": "2026-03-16T17:28:47.081Z",
-  "lastSyncStatus": "success",
+  "lastSyncAt": null,
+  "lastSyncStatus": "never",
   "lastSyncError": null
 }
