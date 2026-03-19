@@ -54,6 +54,14 @@ Gather data using these skills, then assemble the report:
 
 ## Output
 
-Write the completed report to **{{ output | default: "./daily-brief-{date}.md" }}**.
+**The markdown report is the primary deliverable.** You MUST write it to the `output/` directory:
+
+1. Create the `output/` directory if it does not exist: `mkdir -p output`
+2. Write the final markdown report to **`output/daily-brief-{{ date | default: "today" }}.md`**
+3. After writing, verify the file exists and is non-empty: `ls -la output/daily-brief-*.md`
+
+If the user also requested a DOCX or other format, generate that **after** the .md file is confirmed written — the .md is always produced first.
+
+Do NOT skip the file write step. Do NOT treat the markdown as an intermediate artifact. The .md file in `output/` is the deliverable.
 
 Facts, data, and sourced statistics only. No opinions, forecasts, or subjective interpretation.

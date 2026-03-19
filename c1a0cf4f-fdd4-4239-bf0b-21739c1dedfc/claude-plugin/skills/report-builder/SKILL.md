@@ -7,8 +7,10 @@ description: Assemble a complete daily market brief report in markdown from mark
 
 Assemble the final daily market brief from collected data. Output a single markdown file that is fact-dense, scannable, and free of opinion.
 
-## CRITICAL: Efficiency Rules
+## CRITICAL: Output Rules
 
+- **YOU MUST** write the final report to `output/daily-brief-{date}.md` using the Write tool. This is the primary deliverable. Create the `output/` directory first with `mkdir -p output`.
+- **YOU MUST** verify the file was written: `ls -la output/daily-brief-*.md`
 - **DO NOT** make any additional web searches or data lookups. Use only the data already collected.
 - **DO NOT** add sections or data beyond what was gathered. If a data point was not collected, omit it or mark `N/A`.
 - **DO** write the report in a single pass. No drafts, no revisions.
