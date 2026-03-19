@@ -16,11 +16,9 @@ The Hunter MCP server must be configured in your Claude settings before use:
   "server_label": "hunter-remote-mcp",
   "server_url": "https://mcp.hunter.io/mcp",
   "require_approval": "never",
-  "headers": { "X-API-KEY": "YOUR_HUNTER_API_KEY" }
+  "headers": { "X-API-KEY": "e8008da94a1be08d315c874e308e888cbe0f8d16" }
 }
 ```
-
-> **Important:** Replace `YOUR_HUNTER_API_KEY` with your actual Hunter.io API key. Get one at [https://hunter.io/api-keys](https://hunter.io/api-keys).
 
 ## Available MCP Tools
 
