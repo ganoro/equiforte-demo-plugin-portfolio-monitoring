@@ -5,170 +5,80 @@ description: Collect current global market data across equity indices, fixed inc
 
 # Market Snapshot
 
-Collect comprehensive, fact-based market data for the daily brief. Every number must be sourced. Report closing/last values, daily change (absolute and percentage), and week-to-date / month-to-date / year-to-date changes where available.
+Collect fact-based market data for the daily brief. Every number must be sourced.
 
-## Data Collection Workflow
+## CRITICAL: Search Efficiency Rules
 
-### Step 1: Global Equity Indices
+You have a **budget of 8 web searches maximum** for this entire skill. Structure searches to maximize data per query.
 
-Gather close, daily change, and % change for all of the following:
+- **DO NOT** search for individual assets one at a time
+- **DO NOT** re-search for "exact" values if a search already returned data — use what you got
+- **DO** use broad searches that return dashboard/summary pages with multiple data points
+- **DO** accept rounded values from summary pages rather than re-searching for precision
+- If a data point is not found in 1 search, mark it `N/A` — do not retry
 
-**Americas**
-| Index | Ticker |
-|---|---|
-| S&P 500 | SPX |
-| Dow Jones Industrial Average | DJIA |
-| Nasdaq Composite | COMP |
-| Russell 2000 | RUT |
-| S&P/TSX Composite (Canada) | TSX |
-| Bovespa (Brazil) | IBOV |
-| IPC (Mexico) | MEXBOL |
+### Recommended Search Strategy (8 searches)
 
-**Europe**
-| Index | Ticker |
-|---|---|
-| FTSE 100 (UK) | UKX |
-| Euro Stoxx 50 | SX5E |
-| DAX (Germany) | DAX |
-| CAC 40 (France) | CAC |
-| FTSE MIB (Italy) | FTSEMIB |
-| IBEX 35 (Spain) | IBEX |
-| SMI (Switzerland) | SMI |
+1. **Search 1 — US & Global Equities**: "major stock market indices closing prices today [date]" → should return S&P 500, DJIA, Nasdaq, Russell 2000, FTSE, DAX, CAC, Nikkei, Hang Seng, Shanghai in one page
+2. **Search 2 — US Treasury Yields & Rates**: "US treasury yields today 2-year 10-year 30-year [date]" → yields, spreads, Fed Funds, SOFR
+3. **Search 3 — Credit Spreads**: "investment grade high yield credit spreads CDX leveraged loan index today" → IG/HY OAS, CDX, LSTA
+4. **Search 4 — Commodities**: "commodity prices today oil gold copper natural gas [date]" → WTI, Brent, gold, silver, copper, natgas
+5. **Search 5 — FX & DXY**: "US dollar index major currency pairs today EUR USD JPY GBP [date]" → DXY, all major pairs
+6. **Search 6 — Volatility**: "VIX MOVE index put call ratio today [date]" → VIX, MOVE, P/C ratio
+7. **Search 7 — EM currencies & crypto**: "emerging market currencies bitcoin ethereum price today [date]"
+8. **Search 8 — Global sovereign yields**: "global 10 year bond yields Germany UK Japan today [date]"
 
-**Asia-Pacific**
-| Index | Ticker |
-|---|---|
-| Nikkei 225 (Japan) | NKY |
-| Hang Seng (Hong Kong) | HSI |
-| Shanghai Composite (China) | SHCOMP |
-| CSI 300 (China) | CSI300 |
-| KOSPI (South Korea) | KOSPI |
-| S&P/ASX 200 (Australia) | AS51 |
-| Sensex (India) | SENSEX |
-| Nifty 50 (India) | NIFTY |
-| Straits Times (Singapore) | STI |
+## Data to Collect
 
-**Sector Indices (US)**
-| Index | Description |
-|---|---|
-| S&P 500 Financials | XLF sector |
-| S&P 500 Technology | XLK sector |
-| S&P 500 Energy | XLE sector |
-| S&P 500 Healthcare | XLV sector |
-| S&P 500 Industrials | XLI sector |
-| S&P 500 Real Estate | XLRE sector |
-| Philadelphia Semiconductor | SOX |
+### Global Equity Indices
 
-### Step 2: Fixed Income & Rates
+**Core (must have)**
+- S&P 500, DJIA, Nasdaq Composite, Russell 2000
+- FTSE 100, Euro Stoxx 50, DAX, CAC 40
+- Nikkei 225, Hang Seng, Shanghai Composite
+- Sensex/Nifty 50
 
-**US Treasuries**
-| Maturity | Data Points |
-|---|---|
-| 2-Year | Yield, daily change (bps) |
-| 5-Year | Yield, daily change (bps) |
-| 10-Year | Yield, daily change (bps) |
-| 30-Year | Yield, daily change (bps) |
-| 2s10s Spread | Spread (bps), daily change |
-| 5s30s Spread | Spread (bps), daily change |
+**If available from same search (do not search separately)**
+- S&P/TSX, Bovespa, KOSPI, ASX 200, SMI, IBEX, FTSEMIB, STI, CSI 300
 
-**Global Sovereign Yields (10-Year)**
-- German Bund
-- UK Gilt
-- Japan JGB
-- China CGB
-- Italy BTP
-- France OAT
-- Australia ACG
+**US Sector Performance** — only include if returned by a search; do not search separately.
 
-**Credit Spreads**
-| Measure | Source |
-|---|---|
-| IG CDX (North America) | Markit CDX.NA.IG |
-| HY CDX (North America) | Markit CDX.NA.HY |
-| iTraxx Europe Main | Markit iTraxx |
-| iTraxx Europe Crossover | Markit iTraxx Xover |
-| US IG OAS (ICE BofA) | Spread to Treasuries |
-| US HY OAS (ICE BofA) | Spread to Treasuries |
-| Leveraged Loan Index (S&P/LSTA) | Price, yield, spread |
-| CLO AAA Spread | Spread to benchmark |
-| CLO BBB Spread | Spread to benchmark |
+### Fixed Income & Rates
 
-**Money Markets & Central Bank Rates**
-- Fed Funds Effective Rate
-- SOFR
-- Fed Funds Futures (next 3 meetings) — implied rate only, no probability interpretation
-- ECB Deposit Facility Rate
-- BoE Bank Rate
-- BoJ Policy Rate
+**Core**: US 2Y, 5Y, 10Y, 30Y yields + 2s10s spread
+**Global 10Y**: German Bund, UK Gilt, Japan JGB (others if available)
+**Credit**: IG OAS, HY OAS, CDX.NA.IG, CDX.NA.HY, S&P/LSTA Leveraged Loan Index
+**Money markets**: Fed Funds, SOFR, ECB rate, BoE rate (do not search separately — include if found)
 
-### Step 3: Commodities
+### Commodities
 
-| Commodity | Contract |
-|---|---|
-| WTI Crude Oil | Front-month futures |
-| Brent Crude Oil | Front-month futures |
-| Natural Gas (Henry Hub) | Front-month futures |
-| Gold (spot) | XAU/USD |
-| Silver (spot) | XAG/USD |
-| Copper | LME 3-month |
-| Iron Ore (Dalian) | Front-month |
-| Wheat (CBOT) | Front-month |
-| Corn (CBOT) | Front-month |
-| Soybeans (CBOT) | Front-month |
+**Core**: WTI, Brent, Natural Gas, Gold, Silver, Copper
+**If available**: Iron Ore, Wheat, Corn, Soybeans
 
-### Step 4: Foreign Exchange
+### Foreign Exchange
 
-**Major Pairs**
-| Pair | Description |
-|---|---|
-| EUR/USD | Euro vs Dollar |
-| GBP/USD | Sterling vs Dollar |
-| USD/JPY | Dollar vs Yen |
-| USD/CHF | Dollar vs Swiss Franc |
-| AUD/USD | Aussie vs Dollar |
-| USD/CAD | Dollar vs Canadian |
-| NZD/USD | Kiwi vs Dollar |
+**Core**: DXY, EUR/USD, GBP/USD, USD/JPY, USD/CHF, AUD/USD, USD/CAD
+**EM**: USD/CNY, USD/BRL, USD/MXN (others if available)
+**Crypto**: BTC/USD, ETH/USD
 
-**EM & Other**
-| Pair / Index | Description |
-|---|---|
-| DXY | US Dollar Index |
-| USD/CNY | Dollar vs Renminbi |
-| USD/INR | Dollar vs Rupee |
-| USD/BRL | Dollar vs Real |
-| USD/MXN | Dollar vs Peso |
-| USD/ZAR | Dollar vs Rand |
-| USD/TRY | Dollar vs Lira |
-| Bitcoin (BTC/USD) | Spot price |
-| Ethereum (ETH/USD) | Spot price |
+### Volatility
 
-### Step 5: Volatility & Flows
-
-| Indicator | Description |
-|---|---|
-| VIX | CBOE Volatility Index |
-| VIX Term Structure | Front vs 3-month spread |
-| MOVE Index | Bond market volatility |
-| VVIX | Vol-of-vol |
-| Put/Call Ratio (CBOE Equity) | Daily ratio |
-| US Equity Fund Flows (weekly) | Net flows, latest available |
-| EM Fund Flows (weekly) | Net flows, latest available |
+**Core**: VIX, MOVE Index
+**If available**: Put/Call Ratio, VVIX
 
 ## Output Format
 
-For each asset, report in a consistent table:
+For each asset class, report in a table:
 
 ```
-| Asset | Last | Change | % Change | WTD | MTD | YTD |
+| Asset | Last | Change | % Change | YTD |
 ```
 
-- Use exact closing values (not rounded beyond standard market convention)
-- Positive changes: prefix with `+`
-- Negative changes: prefix with `-`
-- Rate changes in basis points (bps)
-- Mark data as "Prior close" if markets have not yet opened for the day
-- If a data point is unavailable, mark as `N/A` — never estimate or interpolate
+- Positive changes: `+`, Negative: `-`
+- Rate changes in bps
+- `N/A` for unavailable data — never estimate
+- Report daily change only. WTD/MTD/YTD only if returned by search — do not compute or search separately.
 
 ## Data Sources
 
-Use available MCP servers (Morningstar, LSEG, FactSet, S&P Global) as primary sources. Supplement with web search for any gaps. Always note the source and timestamp of data.
+Use MCP servers (Morningstar, LSEG, FactSet, S&P Global) as primary. Supplement with web search for gaps.

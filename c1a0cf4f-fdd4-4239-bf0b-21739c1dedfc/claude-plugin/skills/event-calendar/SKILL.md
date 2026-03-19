@@ -5,159 +5,82 @@ description: Compile upcoming financial events, economic releases, earnings, con
 
 # Event Calendar
 
-Compile a forward-looking calendar of scheduled events relevant to financial professionals. Cover the current week plus the next two weeks. All dates and times in Eastern Time (ET) unless otherwise noted.
+Compile a forward-looking calendar of scheduled events relevant to financial professionals. All dates/times in Eastern Time (ET).
 
-## Data Collection Workflow
+## CRITICAL: Search Efficiency Rules
 
-### Step 1: Economic Calendar (Next 2 Weeks)
+You have a **budget of 6 web searches maximum** for this entire skill.
 
-Gather all scheduled releases with:
+- **DO NOT** search for individual company earnings one by one
+- **DO NOT** search for each central bank meeting date separately
+- **DO NOT** search for conferences by individual bank/organizer
+- **DO** use aggregator searches that return calendar/list pages
+- Only cover **this week + next week**. Do not look further ahead except for major conferences.
 
-| Field | Description |
-|---|---|
-| Date | Release date |
-| Time (ET) | Scheduled time |
-| Country | Issuing country |
-| Indicator | Official name |
-| Period | Reference period |
-| Prior | Previous reading |
-| Consensus | Market consensus (if available) |
-| Importance | High / Medium / Low |
+### Recommended Search Strategy (6 searches)
 
-**High-importance releases to always include:**
-- US: NFP, CPI, PPI, PCE, GDP, FOMC decision, retail sales, ISM, jobless claims
+1. **Search 1 — Economic calendar this week and next**: "economic calendar this week next week [date range] US Europe" → most aggregator sites return a full 2-week view
+2. **Search 2 — Central bank meeting schedule**: "central bank meeting schedule 2026 Fed ECB BoE BoJ" → all meeting dates in one search (these are published for the full year)
+3. **Search 3 — Earnings calendar this week**: "earnings calendar this week [date] S&P 500 major companies reporting" → aggregator page with all names
+4. **Search 4 — Earnings calendar next week**: "earnings calendar next week [date range] major companies" → same approach
+5. **Search 5 — Investor conferences and events**: "investor conferences financial events [month] [year]" → conference aggregator
+6. **Search 6 — IPO calendar and Treasury auctions**: "IPO calendar upcoming Treasury auction schedule [month] [year]"
+
+## What to Collect
+
+### Economic Calendar (This Week + Next Week)
+
+**High-importance only** — do not list every minor release:
+- US: NFP, CPI, PPI, PCE, GDP, FOMC, retail sales, ISM, jobless claims
 - Europe: ECB decision, Eurozone CPI, GDP, PMIs
-- UK: BoE decision, CPI, GDP, PMIs
-- China: PBoC decision, GDP, CPI, PMIs, trade balance
-- Japan: BoJ decision, CPI, GDP, Tankan
-- Global: G7/G20 summits, IMF meetings
+- UK: BoE decision, CPI, PMIs
+- China: PBoC, CPI, PMIs, trade balance
+- Japan: BoJ, CPI, Tankan
 
-### Step 2: Central Bank Calendar
+Format:
+| Date | Time (ET) | Country | Indicator | Period | Prior | Consensus |
 
-For each major central bank, list:
+### Central Bank Calendar
 
-| Bank | Next Meeting | Rate Decision Expected | Minutes/Statement Due |
-|---|---|---|---|
+| Bank | Next Meeting | Rate Decision Expected |
 
-Track:
-- FOMC (Fed)
-- ECB Governing Council
-- BoE MPC
-- BoJ Policy Board
-- PBoC
-- RBA
-- Bank of Canada
-- SNB
-- Riksbank
-- Norges Bank
+Cover: FOMC, ECB, BoE, BoJ, PBoC, RBA, BoC. Others only if returned by search.
 
-Also note:
-- Scheduled speeches by governors/chairs/board members (with topic if known)
-- Blackout periods (when officials cannot speak publicly before meetings)
-- Quantitative tightening / balance sheet runoff dates
+### Earnings Calendar
 
-### Step 3: Earnings Calendar
-
-**This Week:**
-List all companies reporting, organized by date and time (before market / after market):
-
-| Date | Time | Company | Ticker | Sector | Consensus EPS | Consensus Revenue |
-|---|---|---|---|---|---|---|
-
-**Next Week:**
-Same format, with emphasis on:
+**This week and next week only.** Focus on:
 - S&P 500 constituents
 - Sector bellwethers
-- Companies relevant to active deal pipelines (PE, IB)
-- Names with high short interest or recent activist activity
+- Do not list companies with market cap below $10B unless sector-relevant
 
-**Earnings Season Stats (if in earnings season):**
-- % of S&P 500 reported
-- % beating EPS estimates
-- % beating revenue estimates
-- Blended earnings growth rate (vs. year-ago)
-- Blended revenue growth rate
+Format:
+| Date | Time | Company | Ticker | EPS Est | Rev Est |
 
-### Step 4: Conferences & Industry Events
+### Conferences & Events (Next 4 Weeks)
 
-Gather conferences and industry events for the next 4 weeks:
+Only list events found in a single search. Do not search for individual conference organizers.
 
-| Date(s) | Event | Location | Host/Organizer | Key Sectors | Notable Presenters |
-|---|---|---|---|---|---|
+| Dates | Event | Location | Key Sectors |
 
-**Categories to cover:**
-- **Investor conferences**: Goldman Sachs, JPMorgan, Morgan Stanley, Barclays, UBS, Citi, BofA, Jefferies, Piper Sandler, RBC, etc.
-- **Industry conferences**: CES, HIMSS, NRF, RSA, MWC, CERAWEEK, etc.
-- **PE/VC events**: SuperReturn, PEI events, ACG conferences, ILPA events
-- **Credit/debt events**: Leveraged Finance conferences, CLO/ABS summits, private credit events
-- **Hedge fund events**: SALT, Sohn, Ira Sohn, Delivering Alpha
-- **Central bank symposia**: Jackson Hole, Sintra ECB Forum, BoE events
-- **Regulatory**: SEC open meetings, Congressional hearings on financial topics
+### IPO & Issuance Calendar
 
-For each event, note if company presentations are scheduled that may contain material non-public forward guidance.
+- Upcoming IPOs (if found)
+- US Treasury auction schedule for the week
+- Notable IG/HY issuance expected
 
-### Step 5: IPO & Capital Markets Calendar
+### Options/Index Dates
 
-**IPO Pipeline:**
-| Company | Ticker | Exchange | Expected Date | Deal Size | Lead Bookrunners | Sector |
-|---|---|---|---|---|---|---|
-
-**Secondary Offerings / Block Trades:**
-- Notable follow-on offerings filed or expected
-
-**Debt Issuance Calendar:**
-- US Treasury auction schedule (bills, notes, bonds, TIPS)
-- Major investment-grade corporate issuance expected
-- High-yield / leveraged loan pricings expected
-- Sovereign issuance (major economies)
-
-### Step 6: Regulatory & Legal Deadlines
-
-- SEC filing deadlines (10-K, 10-Q, proxy season dates)
-- Antitrust review deadlines for pending mergers
-- Major court rulings expected (antitrust, patent, regulatory challenges)
-- Regulatory comment period closings
-- Index rebalancing dates (S&P 500, Russell, MSCI)
-- Options/futures expiration dates (monthly, quarterly)
-- Tax deadlines
-
-### Step 7: Deal Milestones (if focus is PE, IB, or PD)
-
-- Expected deal closings (large M&A)
-- Shareholder vote dates for pending transactions
-- Go-shop period expirations
-- Tender offer deadlines
-- SPAC redemption/extension deadlines
-- Notable fund closings / fundraise deadlines
+Only mention if this week or next includes: monthly/quarterly options expiry, index rebalancing (Russell, MSCI, S&P), or triple/quad witching.
 
 ## Output Format
 
-Organize into a day-by-day calendar for this week, then a weekly summary for the following two weeks.
+**This week**: Day-by-day with all categories merged per day.
+**Next week**: Grouped by category, dates noted.
 
-**Daily view (this week):**
-```
-### [Day, Date]
-
-**Economic Releases**
-- [Time ET] [Country] [Indicator] ([Period]) — Prior: [X], Consensus: [Y]
-
-**Earnings**
-- [BMO/AMC] [Company] ([Ticker]) — EPS est: $X.XX, Rev est: $X.XB
-
-**Events**
-- [Event name] ([Location]) — [Key details]
-
-**Other**
-- [Item]
-```
-
-**Weekly view (next 2 weeks):**
-Group by category with dates noted.
-
-- If a date/time is tentative, mark as `[TBD]`
-- If consensus is not yet available, mark as `N/A`
-- Never fabricate event dates or consensus estimates — use `N/A` if not found
+- `[TBD]` for tentative dates
+- `N/A` for unavailable consensus
+- Never fabricate dates or estimates
 
 ## Data Sources
 
-Use MCP servers (FactSet, Morningstar, S&P Global, MT Newswires, PitchBook) for earnings calendars, economic releases, and deal pipelines. Use web search for conference schedules, IPO calendars, and regulatory deadlines. Cross-reference dates with official sources (Treasury.gov, SEC EDGAR, exchange websites).
+Use MCP servers (FactSet, Morningstar, S&P Global, MT Newswires, PitchBook) for calendars. Web search for conferences and IPOs.

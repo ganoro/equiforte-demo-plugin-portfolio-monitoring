@@ -17,23 +17,43 @@ arguments:
 
 Generate a daily market briefing report for **{{ focus | default: "all" }}** professionals as of **{{ date | default: "today" }}**.
 
+## CRITICAL: Efficiency Constraints
+
+This brief must complete within **5 minutes**. Total web searches across all skills: **maximum 20**.
+
+- Market snapshot: max 8 searches
+- Geopolitical monitor: max 6 searches
+- Event calendar: max 6 searches
+- Report assembly: 0 searches (uses only collected data)
+
+**DO NOT** re-search for data you already have. **DO NOT** search for individual assets one at a time. Use broad queries that return summary/dashboard pages. Accept the precision available from summary pages. Mark gaps as `N/A` rather than retrying.
+
 ## Instructions
 
-1. Use the **market-snapshot** skill to gather all global market data: equity indices, fixed income / rates, commodities, FX, and volatility indicators.
-2. Use the **geopolitical-monitor** skill to compile today's geopolitical and macro developments that are relevant to financial markets.
-3. Use the **event-calendar** skill to gather upcoming economic releases, earnings, conferences, central bank meetings, and deal/regulatory milestones.
-4. Use the **report-builder** skill to assemble the final markdown report from all gathered data.
+Gather data using these skills, then assemble the report:
+
+1. **market-snapshot** — global equity indices, rates, credit spreads, commodities, FX, volatility
+2. **geopolitical-monitor** — central bank actions, economic data releases, geopolitical/trade/policy developments, major corporate events
+3. **event-calendar** — upcoming economic calendar, central bank meetings, earnings, conferences, IPOs, auctions
+
+**Important — avoid cross-task duplication:**
+- Central bank **actions that already happened today** → geopolitical-monitor only
+- Central bank **upcoming meeting dates** → event-calendar only
+- Economic data **already released today** → geopolitical-monitor only
+- Economic data **scheduled for future dates** → event-calendar only
+
+4. **report-builder** — assemble all collected data into the final markdown report. No additional searches.
 
 ## Focus Area Guidance
 
 - **all**: Full briefing across all sections with equal weight.
-- **pe** (Private Equity): Emphasize M&A activity, leveraged loan / high yield markets, private market benchmarks, sponsor-backed deal flow, and PE-relevant conferences.
-- **pd** (Private Debt / Credit): Emphasize credit spreads, leveraged loan indices, CLO markets, default rates, distressed names, direct lending benchmarks, and credit conferences.
-- **hf** (Hedge Funds): Emphasize equity market microstructure (short interest, flows, positioning), volatility surfaces, cross-asset momentum, factor performance, and macro catalysts.
-- **ib** (Investment Banking): Emphasize ECM/DCM issuance, M&A announced/closed, IPO pipeline, league table shifts, and sector deal activity.
+- **pe**: Emphasize M&A activity, leveraged loan / HY markets, sponsor-backed deal flow, PE conferences.
+- **pd**: Emphasize credit spreads, leveraged loan indices, CLO markets, default rates, direct lending.
+- **hf**: Emphasize volatility, flows, positioning, factor performance, cross-asset momentum.
+- **ib**: Emphasize ECM/DCM issuance, M&A announced/closed, IPO pipeline, sector deal activity.
 
 ## Output
 
 Write the completed report to **{{ output | default: "./daily-brief-{date}.md" }}**.
 
-The report must contain **only facts, data, and sourced statistics**. No opinions, forecasts, or subjective interpretation. Where a number moves up or down, state the direction and magnitude — nothing more.
+Facts, data, and sourced statistics only. No opinions, forecasts, or subjective interpretation.

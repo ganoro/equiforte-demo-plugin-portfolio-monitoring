@@ -5,17 +5,23 @@ description: Assemble a complete daily market brief report in markdown from mark
 
 # Daily Brief Report Builder
 
-Assemble the final daily market brief from data collected by the market-snapshot, geopolitical-monitor, and event-calendar skills. The output is a single markdown file that is fact-dense, scannable, and free of opinion.
+Assemble the final daily market brief from collected data. Output a single markdown file that is fact-dense, scannable, and free of opinion.
 
-## Report Structure
+## CRITICAL: Efficiency Rules
 
-The report must follow this exact structure. Do not omit sections. If a section has no data, state "No significant developments."
+- **DO NOT** make any additional web searches or data lookups. Use only the data already collected.
+- **DO NOT** add sections or data beyond what was gathered. If a data point was not collected, omit it or mark `N/A`.
+- **DO** write the report in a single pass. No drafts, no revisions.
+- **Target length: 300-600 lines.** Do not pad with empty rows or verbose descriptions.
+
+## Report Template
+
+Write the report following this structure exactly. Populate tables directly from collected data.
 
 ```markdown
 # Daily Market Brief — [Day, Month DD, YYYY]
 
-> Generated at [HH:MM ET]. Data as of prior close unless noted.
-> Focus: [All / PE / PD / HF / IB]
+> Data as of prior close unless noted. Focus: [All / PE / PD / HF / IB]
 
 ---
 
@@ -33,36 +39,31 @@ The report must follow this exact structure. Do not omit sections. If a section 
 | Index | Close | Change | % Change | YTD |
 |---|---|---|---|---|
 
-### US Sector Performance
-| Sector | Close | % Change | YTD |
-|---|---|---|---|
-[Sorted by daily % change, best to worst]
-
 ### US Treasuries & Rates
-| Maturity | Yield | Change (bps) | WTD | MTD |
-|---|---|---|---|---|
+| Maturity | Yield | Change (bps) |
+|---|---|---|
 
-Curve: 2s10s spread [X] bps ([+/-X] bps)
+2s10s spread: [X] bps ([+/-X])
 
-### Global Sovereign Yields (10Y)
+### Global 10Y Yields
 | Country | Yield | Change (bps) |
 |---|---|---|
 
 ### Credit Spreads
-| Measure | Level | Change (bps) | MTD |
-|---|---|---|---|
+| Measure | Level | Change (bps) |
+|---|---|---|
 
 ### Commodities
-| Commodity | Price | Change | % Change | YTD |
-|---|---|---|---|---|
+| Commodity | Price | Change | % Change |
+|---|---|---|---|
 
-### Foreign Exchange
+### FX
 | Pair | Rate | Change | % Change |
 |---|---|---|---|
 
 DXY: [level] ([+/-X]%)
 
-### Volatility & Sentiment
+### Volatility
 | Indicator | Level | Change |
 |---|---|---|
 
@@ -70,157 +71,69 @@ DXY: [level] ([+/-X]%)
 
 ## 2. Economic Data Releases
 
-### Today's Releases
-| Time (ET) | Country | Indicator | Period | Actual | Prior | Consensus | Surprise |
-|---|---|---|---|---|---|---|---|
-
-[For each notable release, add a single factual line: "[Indicator] came in at [X] vs consensus [Y], [above/below/in line]. Prior was revised [up/down] to [Z] from [W]." — no interpretation of what this means for policy or markets.]
+| Time (ET) | Country | Indicator | Actual | Prior | Consensus | Surprise |
+|---|---|---|---|---|---|---|
 
 ---
 
 ## 3. Central Bank & Policy
 
-[Items from geopolitical-monitor Step 1, formatted as:]
-
-**[Speaker/Event]** ([Time ET])
-[Factual summary. Direct quotes for key policy language.]
+[Only items from today. Each as:]
+**[Speaker/Event]** — [Factual summary with direct quotes for key language.]
 
 ---
 
 ## 4. Geopolitical & Macro Developments
 
-[Items from geopolitical-monitor Steps 3-6, formatted as:]
-
-**[Headline]**
-[1-3 sentence factual description.] Source: [source].
+[Each as:]
+**[Headline]** — [1-2 sentences.] Source: [source].
 
 ---
 
 ## 5. Corporate & Deal Activity
 
-### Major Transactions
-| Date | Type | Parties | Value | Status |
-|---|---|---|---|---|
-
-### Notable Corporate Events
-- [Event descriptions]
+| Type | Parties | Value | Status |
+|---|---|---|---|
 
 ---
 
 ## 6. Upcoming Calendar
 
-### Rest of This Week
-[Day-by-day list from event-calendar]
+### This Week (remaining)
+[Day-by-day: economic releases, earnings, events on each day]
 
 ### Next Week Highlights
-[Key events only, grouped by category]
+[Key events grouped by category]
 
-### Key Earnings This Week
+### Key Earnings
 | Date | Time | Company | Ticker | EPS Est | Rev Est |
 |---|---|---|---|---|---|
 
-### Conferences & Events (Next 4 Weeks)
-| Dates | Event | Location | Key Sectors |
+### Conferences (Next 4 Weeks)
+| Dates | Event | Location | Sectors |
 |---|---|---|---|
-
-### Auction & Issuance Calendar
-[Treasury auctions, notable corporate issuance]
 
 ---
 
 ## 7. Focus Section: [PE / PD / HF / IB]
 
-[Include ONLY if a specific focus was requested. This section surfaces data from the above sections that is particularly relevant to the focus area, plus additional focus-specific data.]
-
-### For PE Focus:
-- Sponsor-backed M&A announced/closed (from deal activity)
-- Leveraged loan / HY market conditions (from credit spreads)
-- Notable PE fund closings or fundraises
-- PE-relevant conferences upcoming
-- Portfolio company earnings this week
-- EBITDA purchase multiple trends (if data available)
-
-### For PD / Credit Focus:
-- Leveraged loan index levels and flows
-- CLO new issuance and spread trends
-- Default rate updates (S&P/Moody's trailing 12-month)
-- Distressed names / watchlist additions
-- Direct lending benchmark rates
-- Credit-focused conference calendar
-
-### For HF Focus:
-- Sector factor performance (value, growth, momentum, quality)
-- Short interest changes (most shorted names)
-- ETF flows (equity, fixed income, commodity)
-- Options market activity (put/call ratio, notable large trades)
-- Cross-asset correlation snapshot
-- CTA/systematic positioning indicators (if available)
-
-### For IB Focus:
-- ECM activity (IPOs priced, filed, withdrawn)
-- DCM activity (IG/HY issuance volumes, notable deals)
-- M&A league table activity
-- Advisory mandates announced
-- Sector deal volume trends
+[ONLY if focus was requested. Pull relevant items from above sections — do not add new data.]
 
 ---
 
-## Sources & Disclaimers
-
-Data sourced from: [list MCP servers and web sources used].
-All data as of [timestamp]. Markets may have moved since publication.
-This briefing contains facts and data only. No investment recommendations or opinions are expressed.
+Sources: [list sources used]. This briefing contains facts and data only.
 ```
 
 ## Formatting Rules
 
-1. **Tables**: Use proper markdown tables. Align numbers right-justified where possible. Use consistent decimal places (2 for prices, 1 for yields, 2 for FX rates).
-
-2. **Directional indicators**:
-   - Positive changes: `+1.23` or `+0.45%`
-   - Negative changes: `-1.23` or `-0.45%`
-   - Unchanged: `0.00` or `UNCH`
-
-3. **Abbreviations** (use consistently):
-   - bps = basis points
-   - BMO = before market open
-   - AMC = after market close
-   - WTD = week-to-date
-   - MTD = month-to-date
-   - YTD = year-to-date
-   - EST/ACT = estimate/actual
-   - N/A = not available
-
-4. **Numbers**:
-   - Billions: `$12.3B`
-   - Millions: `$456.7M`
-   - Thousands: `$89.1K`
-   - Percentages: `3.45%`
-   - Basis points: `+5 bps`
-
-5. **No interpretation rule**: The report may state directional facts ("the S&P 500 fell 1.2%", "CPI came in above consensus") but must NEVER:
-   - Speculate on causes ("fell due to tariff fears")
-   - Predict outcomes ("this suggests the Fed will...")
-   - Characterize magnitude subjectively ("plunged", "soared", "surprisingly strong")
-   - Recommend actions ("investors should consider...")
-   - Use words like: bullish, bearish, hawkish, dovish, risk-on, risk-off, rally, selloff, rout, surge
-
-   Acceptable: "fell", "rose", "declined", "gained", "was unchanged", "above consensus", "below prior"
-
-6. **Data freshness**: Always include the timestamp of data collection. If a data point is stale (>24h), note this.
-
-7. **Length target**: The full report should be 800-1500 lines of markdown depending on how much is happening. A quiet day should still have all sections populated with available data.
+- Positive: `+1.23` / `+0.45%`. Negative: `-1.23` / `-0.45%`. Unchanged: `UNCH`
+- Billions: `$12.3B`, Millions: `$456.7M`, bps: `+5 bps`
+- **No interpretation**: state direction ("fell", "rose", "above consensus") but never speculate on causes, predict outcomes, or use subjective words (bullish, bearish, hawkish, dovish, surge, plunge, soar, rout, rally, selloff, risk-on, risk-off)
 
 ## Quality Checklist
 
-Before finalizing the report:
-
-- [ ] Every number has a source
-- [ ] All tables are properly formatted and render in markdown
-- [ ] No interpretive or subjective language anywhere in the report
+- [ ] All tables render in markdown
+- [ ] No interpretive language
 - [ ] All sections present (even if "No significant developments")
-- [ ] Timestamps are consistent and accurate
-- [ ] Focus section included if requested, omitted if not
-- [ ] File written to the specified output path
-- [ ] Directional indicators (+/-) present on all changes
-- [ ] No data is fabricated — `N/A` used for unavailable data
+- [ ] `N/A` for missing data, never fabricated
+- [ ] Report written to output path
