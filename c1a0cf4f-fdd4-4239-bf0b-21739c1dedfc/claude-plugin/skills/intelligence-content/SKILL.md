@@ -1,6 +1,6 @@
 ---
 name: Intelligence Content System
-description: This skill should be used when the user asks to "generate daily brief", "create intelligence content", "publish ticker", "create pulse report", "write CFO insights", "generate YAML content", "update ticker banner", or mentions intelligence content, daily-brief YAML, pulse YAML, or cfo-insights YAML. Provides the mandatory output format and structure for all Equiforte intelligence content types.
+description: This skill should be used when the user asks to "generate daily brief", "create intelligence content", "publish ticker", "create pulse report", "write CFO insights", "generate YAML content", "update ticker banner", "write morning briefing", "create market update", or mentions intelligence content, daily-brief YAML, pulse YAML, or cfo-insights YAML. Provides the mandatory output format and structure for all Equiforte intelligence content types.
 ---
 
 # Intelligence Content System
@@ -77,7 +77,7 @@ items:
 
 Rules: 4-6 items, each under 80 characters. Use ▲/▼ in text. Direction: `up`, `down`, or `neutral`.
 
-## HTML in Content Fields
+## Formatting in Content Fields
 
 The `preview` and `full_content` fields support:
 - `<h3>`, `<h4>` for section headings
@@ -134,9 +134,10 @@ Before writing output, validate:
 4. Build the YAML file with all required fields
 5. Write the `preview` with the first 2-3 sections (ungated)
 6. Write `full_content` with ALL sections including preview content
-7. Generate the ticker from the most significant data points
-8. Write files to `output/intelligence-data/` with correct filenames
-9. Verify files exist and are non-empty
+7. Always use today's date for `date` and `updated_at` fields — never hardcode a past date
+8. Generate the ticker from the most significant data points
+9. Write files to `output/intelligence-data/` with correct filenames
+10. Verify files exist and are non-empty
 
 ## Additional Resources
 

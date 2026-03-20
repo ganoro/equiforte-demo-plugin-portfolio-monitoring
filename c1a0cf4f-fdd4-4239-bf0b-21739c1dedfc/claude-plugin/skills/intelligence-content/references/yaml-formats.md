@@ -231,6 +231,6 @@ full_content: |
 | Ticker | `latest.yaml` (always) | `ticker/latest.yaml` |
 | Daily Brief | `YYYY-MM-DD.yaml` | `daily-brief/2026-03-20.yaml` |
 | Pulse | `YYYY-MM-DD.yaml` | `pulse/2026-03-20.yaml` |
-| CFO Insights | `YYYY-MM-DD-topic.yaml` | `cfo-insights/2026-03-q1-survey.yaml` |
+| CFO Insights | `YYYY-MM-DD-topic.yaml` | `cfo-insights/2026-03-20-q1-survey.yaml` |
 
 The latest article by filename sort is automatically shown on the homepage and `/latest` pages.

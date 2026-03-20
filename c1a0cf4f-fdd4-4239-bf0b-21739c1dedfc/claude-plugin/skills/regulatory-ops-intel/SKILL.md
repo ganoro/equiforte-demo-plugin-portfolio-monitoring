@@ -1,6 +1,6 @@
 ---
 name: regulatory-ops-intel
-description: This skill should be used when generating a daily brief or when the user asks about "regulatory updates", "SEC rules", "fund admin news", "operational intel", "ILPA updates", "PE technology news", "compliance deadlines", or "vendor changes". Collects regulatory actions and operational/technology developments relevant to PE and credit fund CFOs.
+description: This skill should be used when generating a daily brief or when the user asks about "regulatory updates", "SEC rules", "CFTC rules", "fund admin news", "operational intel", "ILPA updates", "PE technology news", "compliance deadlines", "vendor changes", "AIFMD", "SFDR", "FCA rules", "fund compliance", "ASC 820", or "accounting standards for PE". Collects regulatory actions, compliance deadlines, and operational/technology developments relevant to PE and credit fund CFOs.
 ---
 
 # Regulatory & Operational Intelligence
