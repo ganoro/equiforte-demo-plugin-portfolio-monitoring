@@ -37,9 +37,10 @@ You have a **budget of 6 web searches maximum** for this entire skill.
 For each release:
 | Time (ET) | Country | Indicator | Period | Actual | Prior | Consensus | Surprise |
 
-### Fiscal, Regulatory & Trade Policy (from Search 4)
+### Fiscal & Trade Policy (from Search 4)
 - Only report confirmed actions: executive orders, tariff changes, sanctions, legislation passed
 - State what happened, when, and which sectors/assets are directly affected
+- **DO NOT** report SEC/CFTC/FCA regulatory actions here — those belong in the regulatory-ops-intel skill
 
 ### Geopolitical Events (from Searches 1, 4)
 - Only report developments confirmed by official sources or multiple credible outlets
